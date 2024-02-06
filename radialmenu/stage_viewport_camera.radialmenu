@@ -1,0 +1,9 @@
+{
+	"fileversion":"19.5.303",
+	"name":"stage_viewport_camera",
+	"categories":"Cameras",
+	"pane":"scene",
+	"label":"Stage Viewport Camera",
+	"type":"script_submenu",
+	"script":"slots = ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw']\n\ndef get_camera_paths():\n    network = network_editor.pwd()\n    display_node = network.displayNode()\n    stage = display_node.stage()\n    \n    selection1 = hou.LopSelectionRule()\n    selection1.setPathPattern('%camera_menu')\n    selection2 = hou.LopSelectionRule()\n    selection2.setPathPattern('%type:Camera')\n       \n    sdf_paths1 = selection1.expandedPaths(stage=stage)\n    sdf_paths2 = selection2.expandedPaths(stage=stage)\n    cam_paths = []\n\n    for sdf in sdf_paths1:\n        cam_paths.append(sdf.pathString)\n    \n    for sdf in sdf_paths2:\n        if sdf not in sdf_paths1:\n            cam_paths.append(sdf.pathString)\n        \n    return cam_paths\n\nnetwork_editor = hou.ui.paneTabOfType(hou.paneTabType.NetworkEditor)\n\ndef construct_rmenu(paths):\n    menu = {}\n    camera_paths = paths[:8]\n    for i, path in enumerate(camera_paths):\n        menu[slots[i]] = {\n            'type':'script_action',\n            'label': path.split(\"/\")[-1],\n            'icon':'OBJ_camera',\n            'script':lambda camera=path, **kwargs: set_camera(camera)\n        }\n    return menu\n    \ndef set_camera(cam_path):\n    scene_viewer = hou.ui.paneTabOfType(hou.paneTabType.SceneViewer)\n    selected_viewport = scene_viewer.selectedViewport()\n    \n    selected_viewport.setCamera(str(cam_path))\n\nif network_editor is not None:\n    cameras = get_camera_paths()\n    rmenu = construct_rmenu(cameras)\n\n    radialmenu.setRadialMenu(rmenu)\n        \nelse:\n    print(\"Please open a Network Editor first.\")\n\n"
+}

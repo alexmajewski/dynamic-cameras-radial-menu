@@ -1,0 +1,8 @@
+{
+	"env": [{
+		"CAM_RMENU": "/home/xander/houdini_packages/camera-radialmenu"
+	}],
+
+	"path": "$CAM_RMENU",
+	"package_path": "$CAM_RMENU"
+}
