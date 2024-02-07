@@ -24,3 +24,6 @@ Edit the .JSON file and replace the file path to the actual location of the pack
 Alternatively, you can just put the .radialmenu file inside a `/radialmenu/` folder inside the houdini preferences directory.
 
 Once properly installed, a new option 'Cameras' should appear in the radial menu dropdown at the top of the screen. 
+
+## External platforms
+This product is also available [on Gumroad](https://alexmajewski.gumroad.com/l/dynamic-cameras-radial-menu), where you can add it to your library or even leave me a tip.
