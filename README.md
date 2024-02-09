@@ -27,3 +27,6 @@ Once properly installed, a new option 'Cameras' should appear in the radial menu
 
 ## External platforms
 This product is also available [on Gumroad](https://alexmajewski.gumroad.com/l/dynamic-cameras-radial-menu), where you can add it to your library or even leave me a tip.
+
+## Other Radial Menus
+You may also be interested in pairing this with [Hydra Renderers Radial Menu](https://github.com/alexmajewski/hydra-renderers-radial-menu)
